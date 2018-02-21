@@ -30,7 +30,7 @@
         - deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main
 
     - name: install that other stuff
-      apt: name={{item}} state=present
+      apt: name={{item}} state=latest
       with_items:
         - atom
         - spotify-client
