@@ -1,0 +1,34 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: install necessary tools from normal repos
+      apt: name={{item}} state=installed
+      with_items:
+        - guake
+        - python-pip
+        - htop
+        - tree
+        - nmap
+
+    - name: install repos of other stuff
+      apt_repository:
+        repo: "{{item}}"
+        state: present
+      with_items:
+        - deb [arch=amd64] https://download.docker.com/linux/ubuntu    xenial    stable
+        - deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+        - deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main
+        - deb http://repository.spotify.com stable non-free
+        - deb http://ppa.launchpad.net/webupd8team/atom/ubuntu xenial main
+        - deb-src http://ppa.launchpad.net/webupd8team/atom/ubuntu xenial main
+        - deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main
+        - deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main
+
+    - name: install that other stuff
+      apt: name={{item}} state=installed
+      with_items:
+        - atom
+        - spotify-client
+        - slack
+        - docker-ce
+        - google-chrome-stable
