@@ -49,3 +49,6 @@
         - docker-py
         - pyetcd
         - pymongo
+
+    - name: add user to docker group
+      user: name=qubusp groups=docker append=yes
