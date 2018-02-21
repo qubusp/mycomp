@@ -9,6 +9,8 @@
         - htop
         - tree
         - nmap
+        - mlocate
+        - tmux
 
     - name: install repos of other stuff
       apt_repository:
