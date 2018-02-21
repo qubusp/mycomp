@@ -11,7 +11,10 @@
         - nmap
         - mlocate
         - tmux
-
+        - lxc
+        - lxc-templates
+        - ruby
+        - ruby-devel
     - name: install repos of other stuff
       apt_repository:
         repo: "{{item}}"
@@ -34,3 +37,15 @@
         - slack
         - docker-ce
         - google-chrome-stable
+    - name: start services
+      service: name={{item}} state=started enabled=yes
+      with_items:
+        - docker
+        - lxc
+    - name: install docker compose
+      pip: name={{item}} state=installed
+      with_items:
+        - docker-compose
+        - docker-py
+        - pyetcd
+        - pymongo
