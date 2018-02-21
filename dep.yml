@@ -14,7 +14,7 @@
         - lxc
         - lxc-templates
         - ruby
-        - ruby-devel
+
     - name: install repos of other stuff
       apt_repository:
         repo: "{{item}}"
@@ -30,7 +30,7 @@
         - deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main
 
     - name: install that other stuff
-      apt: name={{item}} state=installed
+      apt: name={{item}} state=present
       with_items:
         - atom
         - spotify-client
