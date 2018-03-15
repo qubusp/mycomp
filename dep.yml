@@ -51,4 +51,4 @@
         - pymongo
 
     - name: add user to docker group
-      user: name=qubusp groups=docker append=yes
+      user: name=qubsup groups=docker append=yes
